@@ -4,15 +4,21 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 
 public interface CharSanitizer {
 	
+	int FORMAT_LENGTH = 1;
+	
 	static char sanitizeValue(Object value) throws BadFormatException{
 		
-		String stringValue = TextSanitizer.sanitizeValue(value);
-		
-		if(stringValue.length() != 1){
-			throw new BadFormatException("Only one character is expected!", 1);
+		try{
+			
+			String stringValue = TextLengthSanitizer.sanitizeValue(value, 1);
+			
+			return stringValue.charAt(0);
+			
 		}
-		
-		return stringValue.charAt(0);
+		catch(BadFormatException e){
+			throw new BadFormatException("Only one character is expected!",
+					FORMAT_LENGTH);
+		}
 		
 	}
 	

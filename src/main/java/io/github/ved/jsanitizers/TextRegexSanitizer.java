@@ -7,6 +7,8 @@ import java.util.regex.PatternSyntaxException;
 
 public interface TextRegexSanitizer {
 	
+	int FORMAT_NOT_MATCHING_PATTERN = 1;
+	
 	static String sanitizeValue(Object value, String regexToMatch)
 			throws BadFormatException, PatternSyntaxException{
 		return TextRegexSanitizer.sanitizeValue(value, regexToMatch, false);
@@ -30,7 +32,7 @@ public interface TextRegexSanitizer {
 			boolean isInverted, boolean shouldBox, boolean shouldCheckPattern)
 			throws BadFormatException, PatternSyntaxException{
 		
-		String stringValue = TextNotEmptySanitizer.sanitizeValue(value);
+		String stringValue = TextSanitizer.sanitizeValue(value);
 		
 		if(regexToMatch != null){
 			
@@ -46,7 +48,8 @@ public interface TextRegexSanitizer {
 			// Test regex and invert if we need to
 			if(stringValue.matches(regexToMatch) == isInverted){
 				throw new BadFormatException(
-						"Value does not match the required pattern!", 2);
+						"Value does not match the required pattern!",
+						FORMAT_NOT_MATCHING_PATTERN);
 			}
 			
 		}

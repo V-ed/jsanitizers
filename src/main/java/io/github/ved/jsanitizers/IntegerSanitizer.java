@@ -4,6 +4,11 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 
 public interface IntegerSanitizer {
 	
+	int FORMAT_EMPTY = TextNotEmptySanitizer.FORMAT_EMPTY;
+	int FORMAT_NOT_A_NUMBER = 2;
+	int FORMAT_LOWER_THAN_MIN = 3;
+	int FORMAT_HIGHER_THAN_MAX = 4;
+	
 	static int sanitizeValue(Object value) throws BadFormatException{
 		return IntegerSanitizer.sanitizeValue(value, Integer.MIN_VALUE,
 				Integer.MAX_VALUE);
@@ -38,18 +43,19 @@ public interface IntegerSanitizer {
 			
 		}
 		catch(ClassCastException | NumberFormatException e){
-			throw new BadFormatException("Value is not a number!", 2);
+			throw new BadFormatException("Value is not a number!",
+					FORMAT_NOT_A_NUMBER);
 		}
 		
 		if(minValue != Integer.MIN_VALUE && castedValue < minValue){
 			throw new BadFormatException("Value (" + castedValue
 					+ ") is lower than the minimum required (" + minValue
-					+ ")!", 3);
+					+ ")!", FORMAT_LOWER_THAN_MIN);
 		}
 		else if(maxValue != Integer.MAX_VALUE && castedValue > maxValue){
 			throw new BadFormatException("Value (" + castedValue
 					+ ") is higher than the maximum permitted (" + maxValue
-					+ ")!", 4);
+					+ ")!", FORMAT_HIGHER_THAN_MAX);
 		}
 		
 		return castedValue;

@@ -4,6 +4,8 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 
 public interface BooleanSanitizer {
 	
+	int FORMAT_NOT_BOOLEAN = 1;
+	
 	static boolean sanitizeValue(Object value) throws BadFormatException{
 		
 		boolean castedValue;
@@ -31,7 +33,7 @@ public interface BooleanSanitizer {
 		catch(Exception e){
 			throw new BadFormatException(
 					"Value cannot be something else than \"true\" or \"false\"!",
-					1);
+					FORMAT_NOT_BOOLEAN);
 		}
 		
 		return castedValue;

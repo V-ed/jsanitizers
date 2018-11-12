@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface EnumSanitizer {
 	
+	int FORMAT_NOT_MATCHING_PATTERN = TextRegexSanitizer.FORMAT_NOT_MATCHING_PATTERN;
+	int FORMAT_NOT_A_CHOICE = 2;
+	
 	static String sanitizeValue(Object value, List<String> values)
 			throws BadFormatException{
 		
@@ -15,7 +18,7 @@ public interface EnumSanitizer {
 		
 		if(!values.contains(stringValue)){
 			throw new BadFormatException("The value " + stringValue
-					+ " is not a choice for this setting!", 1);
+					+ " is not a choice in the list!", FORMAT_NOT_A_CHOICE);
 		}
 		
 		return stringValue;

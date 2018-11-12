@@ -4,6 +4,9 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 
 public interface TextLengthSanitizer {
 	
+	int FORMAT_MIN_LENGTH = 1;
+	int FORMAT_MAX_LENGTH = 2;
+	
 	static String sanitizeValueMin(Object value, int minLength)
 			throws BadFormatException{
 		return TextLengthSanitizer.sanitizeValue(value, minLength,
@@ -16,6 +19,11 @@ public interface TextLengthSanitizer {
 				maxLength);
 	}
 	
+	static String sanitizeValue(Object value, int length)
+			throws BadFormatException{
+		return TextLengthSanitizer.sanitizeValue(value, length, length);
+	}
+	
 	static String sanitizeValue(Object value, int minLength, int maxLength)
 			throws BadFormatException{
 		
@@ -24,14 +32,12 @@ public interface TextLengthSanitizer {
 		int stringLength = stringValue.length();
 		
 		if(minLength != Integer.MIN_VALUE && stringLength < minLength){
-			throw new BadFormatException(
-					"This setting's value needs to have at least " + minLength
-							+ " characters!", 1);
+			throw new BadFormatException("The value needs to have at least "
+					+ minLength + " characters!", FORMAT_MIN_LENGTH);
 		}
 		else if(maxLength != Integer.MAX_VALUE && stringLength > maxLength){
-			throw new BadFormatException(
-					"This setting's value cannot have more than " + maxLength
-							+ " characters!", 2);
+			throw new BadFormatException("The value cannot have more than "
+					+ maxLength + " characters!", FORMAT_MAX_LENGTH);
 		}
 		
 		return stringValue;
