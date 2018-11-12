@@ -7,11 +7,17 @@ sudo: false
 
 script: mvn clean verify
 
+before_deploy:
+  - cp .travis.settings.xml $HOME/.m2/settings.xml
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+  - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+
 deploy:
   provider: script
-  script: "cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy -DskipTests"
+  script: mvn deploy -DskipTests -P release
+  skip_cleanup: true
   on:
-    branch: dev
+    tags: true
 
 notifications:
   email:
