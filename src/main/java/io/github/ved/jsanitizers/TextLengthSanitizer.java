@@ -25,7 +25,12 @@ public interface TextLengthSanitizer {
 	}
 	
 	static String sanitizeValue(Object value, int minLength, int maxLength)
-			throws BadFormatException{
+			throws BadFormatException, IllegalArgumentException{
+		
+		if(minLength > maxLength){
+			throw new IllegalArgumentException(
+					"The argument minLength shouldn't be bigger than the argument maxLength.");
+		}
 		
 		String stringValue = TextSanitizer.sanitizeValue(value);
 		
