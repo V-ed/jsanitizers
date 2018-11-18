@@ -839,7 +839,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -851,7 +855,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -863,7 +871,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -875,7 +887,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -887,7 +903,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -899,7 +919,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -911,7 +935,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -923,7 +951,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value);
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -935,7 +967,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value, '[');
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -947,7 +983,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value, '[');
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -959,7 +999,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value, '[');
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -971,7 +1015,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value, '[');
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -983,7 +1031,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value, '[');
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -995,7 +1047,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value, '[');
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
@@ -1007,7 +1063,11 @@ class EnumSanitizerTest {
 		Executable shouldThrowBadFormatException = () -> EnumSanitizer
 				.extractEnumFromString(value, '[');
 		
-		assertThrows(BadFormatException.class, shouldThrowBadFormatException);
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_ACCEPTED,
+				exception.getErrorCode());
 		
 	}
 	
