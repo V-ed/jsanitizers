@@ -33,16 +33,14 @@ public interface IntegerSanitizer {
 		
 		try{
 			
-			if(value instanceof String){
-				castedValue = Integer.valueOf(TextNotEmptySanitizer
-						.sanitizeValue(value));
-			}
-			else{
-				castedValue = (Integer)value;
-			}
+			String stringValue = TextNotEmptySanitizer.sanitizeValue(value);
+			
+			stringValue = stringValue.replaceAll("^(-)\\s+(\\d+)$", "$1$2");
+			
+			castedValue = Integer.valueOf(stringValue);
 			
 		}
-		catch(ClassCastException | NumberFormatException e){
+		catch(NumberFormatException e){
 			throw new BadFormatException("Value is not a number!",
 					FORMAT_NOT_A_NUMBER);
 		}
