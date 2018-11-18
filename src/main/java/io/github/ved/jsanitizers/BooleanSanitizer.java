@@ -8,35 +8,15 @@ public interface BooleanSanitizer {
 	
 	static boolean sanitizeValue(Object value) throws BadFormatException{
 		
-		boolean castedValue;
+		String stringValue = TextSanitizer.sanitizeValue(value);
 		
-		try{
-			
-			if(value instanceof String){
-				
-				String stringValue = (String)value;
-				
-				if(!stringValue.matches("^(?i)true|false$")){
-					throw new Exception();
-				}
-				
-				castedValue = Boolean.valueOf(stringValue);
-				
-			}
-			else{
-				
-				castedValue = (boolean)value;
-				
-			}
-			
-		}
-		catch(Exception e){
+		if(!stringValue.matches("^(?i)true|false$")){
 			throw new BadFormatException(
 					"Value cannot be something else than \"true\" or \"false\"!",
 					FORMAT_NOT_BOOLEAN);
 		}
 		
-		return castedValue;
+		return Boolean.valueOf(stringValue);
 		
 	}
 	
