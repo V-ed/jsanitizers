@@ -7,7 +7,7 @@ public interface TextSanitizer {
 		if(value == null)
 			return "";
 		
-		return value.toString();
+		return value.toString().trim();
 		
 	}
 	
