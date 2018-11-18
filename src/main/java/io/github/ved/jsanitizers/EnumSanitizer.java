@@ -3,16 +3,26 @@ package io.github.ved.jsanitizers;
 import io.github.ved.jsanitizers.exceptions.BadFormatException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 
 public interface EnumSanitizer {
 	
-	int FORMAT_NOT_MATCHING_PATTERN = TextRegexSanitizer.FORMAT_NOT_MATCHING_PATTERN;
+	int FORMAT_NOT_ACCEPTED = TextRegexSanitizer.FORMAT_NOT_MATCHING_PATTERN;
 	int FORMAT_NOT_A_CHOICE = 2;
+	
+	static String sanitizeValue(Object value, String... values)
+			throws BadFormatException{
+		return sanitizeValue(value, new ArrayList<>(Arrays.asList(values)));
+	}
 	
 	static String sanitizeValue(Object value, List<String> values)
 			throws BadFormatException{
+		if(values.size() == 0){
+			throw new IllegalArgumentException(
+					"You need to provide at least one value to the values list!");
+		}
 		
 		String stringValue = TextSanitizer.sanitizeValue(value);
 		
