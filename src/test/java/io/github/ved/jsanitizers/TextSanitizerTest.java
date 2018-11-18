@@ -7,6 +7,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TextSanitizerTest {
 	
 	@Test
+	void testNull(){
+		
+		String value = null;
+		
+		String result = TextSanitizer.sanitizeValue(value);
+		
+		assertEquals("", result);
+		
+	}
+	
+	@Test
 	void testString(){
 		
 		String value = "hi";

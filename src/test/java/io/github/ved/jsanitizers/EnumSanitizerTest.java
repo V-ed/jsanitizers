@@ -89,6 +89,36 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
+	void testSanitizeWithArrayEmpty(){
+		
+		String value = "test";
+		
+		String[] validList = new String[]{};
+		
+		Executable shouldThrowIllegalArgumentException = () -> EnumSanitizer
+				.sanitizeValue(value, validList);
+		
+		assertThrows(IllegalArgumentException.class,
+				shouldThrowIllegalArgumentException);
+		
+	}
+	
+	@Test
+	void testSanitizeWithListEmpty(){
+		
+		String value = "test";
+		
+		ArrayList<String> validList = new ArrayList<>();
+		
+		Executable shouldThrowIllegalArgumentException = () -> EnumSanitizer
+				.sanitizeValue(value, validList);
+		
+		assertThrows(IllegalArgumentException.class,
+				shouldThrowIllegalArgumentException);
+		
+	}
+	
+	@Test
 	void testSingleValueNoSpace(){
 		
 		String value = "Hello!";
