@@ -19,82 +19,82 @@ public class IntegerSanitizerTest {
 		assertEquals(1, result);
 		
 	}
-
+	
 	@Test
 	void testHighNumber(){
-
+		
 		String value = "123456";
-
+		
 		int result = IntegerSanitizer.sanitizeValue(value);
-
+		
 		assertEquals(123456, result);
-
+		
 	}
-
+	
 	@Test
 	void testSimpleNumberNegative(){
-
+		
 		String value = "-1";
-
+		
 		int result = IntegerSanitizer.sanitizeValue(value);
-
+		
 		assertEquals(-1, result);
-
+		
 	}
-
+	
 	@Test
 	void testSimpleNumberNegativeWithSpace(){
-
+		
 		String value = "- 1";
-
+		
 		int result = IntegerSanitizer.sanitizeValue(value);
-
+		
 		assertEquals(-1, result);
-
+		
 	}
-
+	
 	@Test
 	void testSimpleNumberNegativeWithFunkySpaces(){
-
+		
 		String value = "-   \t  1";
-
+		
 		int result = IntegerSanitizer.sanitizeValue(value);
-
+		
 		assertEquals(-1, result);
-
+		
 	}
-
+	
 	@Test
 	void testHighNumberNegative(){
-
+		
 		String value = "-123456";
-
+		
 		int result = IntegerSanitizer.sanitizeValue(value);
-
+		
 		assertEquals(-123456, result);
-
+		
 	}
-
+	
 	@Test
 	void testHighNumberNegativeWithSpace(){
-
+		
 		String value = "- 123456";
-
+		
 		int result = IntegerSanitizer.sanitizeValue(value);
-
+		
 		assertEquals(-123456, result);
-
+		
 	}
-
+	
 	@Test
 	void testHighNumberNegativeWithFunkySpaces(){
-
+		
 		String value = "-   \t  123456";
-
+		
 		int result = IntegerSanitizer.sanitizeValue(value);
-
+		
 		assertEquals(-123456, result);
-
+		
 	}
 	
 	@Test

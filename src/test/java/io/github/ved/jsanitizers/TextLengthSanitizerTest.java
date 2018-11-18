@@ -67,21 +67,21 @@ public class TextLengthSanitizerTest {
 				exception.getErrorCode());
 		
 	}
-
+	
 	@Test
 	void testStringSingleLengthUnder(){
-
+		
 		String value = "hi";
-
+		
 		Executable shouldThrowBadFormatException = () -> TextLengthSanitizer
 				.sanitizeValue(value, 3);
-
+		
 		BadFormatException exception = assertThrows(BadFormatException.class,
 				shouldThrowBadFormatException);
-
+		
 		assertEquals(TextLengthSanitizer.FORMAT_MIN_LENGTH,
 				exception.getErrorCode());
-
+		
 	}
 	
 	@Test
