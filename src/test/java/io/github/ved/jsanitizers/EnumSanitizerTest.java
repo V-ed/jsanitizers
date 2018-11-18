@@ -3,6 +3,7 @@ package io.github.ved.jsanitizers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -11,6 +12,81 @@ import org.junit.jupiter.api.function.Executable;
 import io.github.ved.jsanitizers.exceptions.BadFormatException;
 
 class EnumSanitizerTest {
+	
+	@Test
+	void testSanitizeWithArray(){
+		
+		String value = "test";
+		
+		String[] validList = new String[]
+		{
+			"nope", "yes", "test"
+		};
+		
+		String result = EnumSanitizer.sanitizeValue(value, validList);
+		
+		assertEquals("test", result);
+		
+	}
+	
+	@Test
+	void testSanitizeWithList(){
+		
+		String value = "test";
+		
+		ArrayList<String> validList = new ArrayList<>();
+		
+		validList.add("nope");
+		validList.add("yes");
+		validList.add("test");
+		
+		String result = EnumSanitizer.sanitizeValue(value, validList);
+		
+		assertEquals("test", result);
+		
+	}
+	
+	@Test
+	void testSanitizeWithArrayNotPresent(){
+		
+		String value = "test";
+		
+		String[] validList = new String[]
+		{
+			"nope", "yes"
+		};
+		
+		Executable shouldThrowBadFormatException = () -> EnumSanitizer
+				.sanitizeValue(value, validList);
+		
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_A_CHOICE,
+				exception.getErrorCode());
+		
+	}
+	
+	@Test
+	void testSanitizeWithListNotPresent(){
+		
+		String value = "test";
+		
+		ArrayList<String> validList = new ArrayList<>();
+		
+		validList.add("nope");
+		validList.add("yes");
+		
+		Executable shouldThrowBadFormatException = () -> EnumSanitizer
+				.sanitizeValue(value, validList);
+		
+		BadFormatException exception = assertThrows(BadFormatException.class,
+				shouldThrowBadFormatException);
+		
+		assertEquals(EnumSanitizer.FORMAT_NOT_A_CHOICE,
+				exception.getErrorCode());
+		
+	}
 	
 	@Test
 	void testSingleValueNoSpace(){
