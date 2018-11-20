@@ -5,8 +5,10 @@ jdk:
   
 sudo: false
 
-install:
+before_install:
   - export MAVEN_OPTS=-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+
+install:
   - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 script:
