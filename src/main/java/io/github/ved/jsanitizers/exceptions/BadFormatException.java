@@ -1,6 +1,6 @@
 package io.github.ved.jsanitizers.exceptions;
 
-public class BadFormatException extends IllegalArgumentException {
+public class BadFormatException extends RuntimeException {
 	
 	private int code;
 	
