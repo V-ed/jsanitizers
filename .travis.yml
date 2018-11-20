@@ -6,13 +6,14 @@ jdk:
 sudo: false
 
 install:
+  - export MAVEN_OPTS=-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
   - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 script:
-  - mvn clean test jacoco:report
+  - mvn clean test jacoco:report -B
 
 after_success:
-  - mvn coveralls:report
+  - mvn coveralls:report -B
 
 before_deploy:
   - cp .travis.settings.xml $HOME/.m2/settings.xml
