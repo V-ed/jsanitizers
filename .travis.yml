@@ -41,3 +41,4 @@ branches:
     - dev
     - /^release.*$/
     - /^hotfix.*$/
+    - /^v.*$/
