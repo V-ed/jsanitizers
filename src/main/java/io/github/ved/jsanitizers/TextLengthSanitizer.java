@@ -119,8 +119,10 @@ public interface TextLengthSanitizer {
 	 *             <li>{@link #FORMAT_MAX_LENGTH} : if the String's length is
 	 *             higher than the given {@code maxLength} parameter.</li>
 	 *             </ul>
-	 * @see TextSanitizer
 	 * @throws IllegalArgumentException
+	 *             Thrown if the {@code minLength} parameter's integer value is
+	 *             bigger than the {@code maxLength} parameter's integer value.
+	 * @see TextSanitizer
 	 */
 	static String sanitizeValue(Object value, int minLength, int maxLength)
 			throws BadFormatException, IllegalArgumentException{
