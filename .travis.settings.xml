@@ -4,7 +4,7 @@
     <server>
       <id>ossrh</id>
       <username>V-ed</username>
-      <password>${env.DEPLOY_PASS}</password>
+      <password><![CDATA[${env.DEPLOY_PASS}]]></password>
     </server>
   </servers>
 
@@ -16,7 +16,7 @@
       </activation>
       <properties>
         <gpg.executable>${env.GPG_EXECUTABLE}</gpg.executable>
-        <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+        <gpg.passphrase><![CDATA[${env.GPG_PASSPHRASE}]]></gpg.passphrase>
       </properties>
     </profile>
   </profiles>
