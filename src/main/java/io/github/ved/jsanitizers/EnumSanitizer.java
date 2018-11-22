@@ -7,17 +7,79 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+/**
+ * Utility that sanitizes enum objects. By enum objects, it is intended that it
+ * starts from a string, gets extracted, then verifies if the objects is
+ * contained in the extract list.
+ */
 public interface EnumSanitizer {
 	
+	/**
+	 * String value is not accepted as an enum definition
+	 */
 	int FORMAT_NOT_ACCEPTED = TextRegexSanitizer.FORMAT_NOT_MATCHING_PATTERN;
+	
+	/**
+	 * Value is not present in the list given
+	 */
 	int FORMAT_NOT_A_CHOICE = 2;
 	
+	/**
+	 * Sanitizes any object's String value to verify if it is present in the
+	 * values provided in the {@code values} parameter.
+	 *
+	 * @param value
+	 *            Any object that its String value is a parsable number within
+	 *            the bounds of the Integer primitive object.
+	 * @param values
+	 *            A list of values accepted to sanitize the given {@code value}.
+	 * @return The String object as if the
+	 *         {@link TextSanitizer#sanitizeValue(Object)} method was used.
+	 * @throws BadFormatException
+	 *             Thrown if the value's format is not matching this sanitizer's
+	 *             purpose. Possible codes are :
+	 *             <ul>
+	 *             <li>{@link #FORMAT_NOT_A_CHOICE} : if the value's String
+	 *             representation is not a choice given in the {@code values}'
+	 *             list.</li>
+	 *             </ul>
+	 * @throws IllegalArgumentException
+	 *             Thrown if the values list is empty. Please use
+	 *             {@link TextSanitizer} if you want a String representation of
+	 *             your value without any testing beforehand.
+	 * @see TextSanitizer
+	 */
 	static String sanitizeValue(Object value, String... values)
 			throws BadFormatException, IllegalArgumentException{
 		return EnumSanitizer.sanitizeValue(value,
 				new ArrayList<>(Arrays.asList(values)));
 	}
 	
+	/**
+	 * Sanitizes any object's String value to verify if it is present in the
+	 * values provided in the {@code values} parameter.
+	 *
+	 * @param value
+	 *            Any object that its String value is a parsable number within
+	 *            the bounds of the Integer primitive object.
+	 * @param values
+	 *            A list of values accepted to sanitize the given {@code value}.
+	 * @return The String object as if the
+	 *         {@link TextSanitizer#sanitizeValue(Object)} method was used.
+	 * @throws BadFormatException
+	 *             Thrown if the value's format is not matching this sanitizer's
+	 *             purpose. Possible codes are :
+	 *             <ul>
+	 *             <li>{@link #FORMAT_NOT_A_CHOICE} : if the value's String
+	 *             representation is not a choice given in the {@code values}'
+	 *             list.</li>
+	 *             </ul>
+	 * @throws IllegalArgumentException
+	 *             Thrown if the values list is empty. Please use
+	 *             {@link TextSanitizer} if you want a String representation of
+	 *             your value without any testing beforehand.
+	 * @see TextSanitizer
+	 */
 	static String sanitizeValue(Object value, List<String> values)
 			throws BadFormatException, IllegalArgumentException{
 		
@@ -37,11 +99,75 @@ public interface EnumSanitizer {
 		
 	}
 	
+	/**
+	 * Extracts a list of values based on the format of the String given.<h3>
+	 * Example of good formats</h3>
+	 * <ul>
+	 * <li>{@code Value1|Value2|Value3}</li>
+	 * <li>{@code Value1 | Value2 | Value3}</li>
+	 * <li>{@code |}</li>
+	 * <li>{@code ||}</li>
+	 * <li>{@code |||||||}</li>
+	 * <li>{@code Value \| still 1 with a pipe}</li>
+	 * <li>{@code Value \| 1 | Value \| 2}</li>
+	 * <li>{@code Value \\| 1 with 1 backslash and pipe symbol}</li>
+	 * </ul>
+	 * <h3>Example of bad formats</h3>
+	 * <ul>
+	 * <li>{@code | Startup pipes | are | evil}</li>
+	 * <li>{@code Same | with | ending pipes |}</li>
+	 * </ul>
+	 * 
+	 * @param stringValue
+	 *            The values separated by {@code "|"}.
+	 * @return A list containing all the values separated for simplicity of
+	 *         retrieval.
+	 * @throws BadFormatException
+	 *             Thrown if the stringValue's format is not matching the
+	 *             separation format. The error code will be
+	 *             {@link #FORMAT_NOT_ACCEPTED}.
+	 * @see #extractEnumFromString(String, char)
+	 * @see #verifyStringFormat(String, char)
+	 */
 	static List<String> extractEnumFromString(String stringValue)
 			throws BadFormatException{
 		return EnumSanitizer.extractEnumFromString(stringValue, '|');
 	}
 	
+	/**
+	 * Extracts a list of values based on the format of the String given. This
+	 * method supports for a different separator (can only be one character),
+	 * given in the {@code separator} parameter.<h3>Example of good formats
+	 * (with the separator {@code '|'})</h3>
+	 * <ul>
+	 * <li>{@code Value1|Value2|Value3}</li>
+	 * <li>{@code Value1 | Value2 | Value3}</li>
+	 * <li>{@code |}</li>
+	 * <li>{@code ||}</li>
+	 * <li>{@code |||||||}</li>
+	 * <li>{@code Value \| still 1 with a pipe}</li>
+	 * <li>{@code Value \| 1 | Value \| 2}</li>
+	 * <li>{@code Value \\| 1 with 1 backslash and pipe symbol}</li>
+	 * </ul>
+	 * <h3>Example of bad formats (with the separator {@code '|'})</h3>
+	 * <ul>
+	 * <li>{@code | Startup pipes | are | evil}</li>
+	 * <li>{@code Same | with | ending pipes |}</li>
+	 * </ul>
+	 * 
+	 * @param stringValue
+	 *            The values separated by the separator as declared in the
+	 *            parameter {@code separator}.
+	 * @param separator
+	 *            The separator to use when splitting values.
+	 * @return A list containing all the values separated for simplicity of
+	 *         retrieval.
+	 * @throws BadFormatException
+	 *             Thrown if the stringValue's format is not matching the
+	 *             separation format. The error code will be
+	 *             {@link #FORMAT_NOT_ACCEPTED}.
+	 * @see #verifyStringFormat(String, char)
+	 */
 	static List<String> extractEnumFromString(String stringValue, char separator)
 			throws BadFormatException{
 		
@@ -96,6 +222,38 @@ public interface EnumSanitizer {
 		
 	}
 	
+	/**
+	 * Verify the format of a given string to see if it's splittable via
+	 * {@link #extractEnumFromString(String, char)}. <h3>Example of good formats
+	 * (with the separator {@code '|'})</h3>
+	 * <ul>
+	 * <li>{@code Value1|Value2|Value3}</li>
+	 * <li>{@code Value1 | Value2 | Value3}</li>
+	 * <li>{@code |}</li>
+	 * <li>{@code ||}</li>
+	 * <li>{@code |||||||}</li>
+	 * <li>{@code Value \| still 1 with a pipe}</li>
+	 * <li>{@code Value \| 1 | Value \| 2}</li>
+	 * <li>{@code Value \\| 1 with 1 backslash and pipe symbol}</li>
+	 * </ul>
+	 * <h3>Example of bad formats (with the separator {@code '|'})</h3>
+	 * <ul>
+	 * <li>{@code | Startup pipes | are | evil}</li>
+	 * <li>{@code Same | with | ending pipes |}</li>
+	 * </ul>
+	 * 
+	 * @param stringValue
+	 *            The values separated by the separator as declared in the
+	 *            parameter {@code separator}.
+	 * @param separator
+	 *            The separator to use when splitting values.
+	 * @return {@code true} if the String given is splittable via the extract
+	 *         logic, {@code false} otherwise.
+	 * @throws BadFormatException
+	 *             Thrown if the stringValue's format is not matching the
+	 *             separation format. The error code will be
+	 *             {@link #FORMAT_NOT_ACCEPTED}.
+	 */
 	static String verifyStringFormat(String stringValue, char separator)
 			throws BadFormatException{
 		
