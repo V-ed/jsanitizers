@@ -13,12 +13,14 @@ public interface EnumSanitizer {
 	int FORMAT_NOT_A_CHOICE = 2;
 	
 	static String sanitizeValue(Object value, String... values)
-			throws BadFormatException{
-		return sanitizeValue(value, new ArrayList<>(Arrays.asList(values)));
+			throws BadFormatException, IllegalArgumentException{
+		return EnumSanitizer.sanitizeValue(value,
+				new ArrayList<>(Arrays.asList(values)));
 	}
 	
 	static String sanitizeValue(Object value, List<String> values)
-			throws BadFormatException{
+			throws BadFormatException, IllegalArgumentException{
+		
 		if(values.size() == 0){
 			throw new IllegalArgumentException(
 					"You need to provide at least one value to the values list!");
@@ -37,7 +39,7 @@ public interface EnumSanitizer {
 	
 	static List<String> extractEnumFromString(String stringValue)
 			throws BadFormatException{
-		return extractEnumFromString(stringValue, '|');
+		return EnumSanitizer.extractEnumFromString(stringValue, '|');
 	}
 	
 	static List<String> extractEnumFromString(String stringValue, char separator)
@@ -45,9 +47,9 @@ public interface EnumSanitizer {
 		
 		// Verify that string is of format "[...]| [...] | [...]" while allowing single choice enums.
 		// ~ Resetting stringValue here was not necessary, but this will make it future-proof ~
-		stringValue = verifyStringFormat(stringValue, separator);
+		stringValue = EnumSanitizer.verifyStringFormat(stringValue, separator);
 		
-		String pSep = protectSeparator(separator);
+		String pSep = Utils.protectSeparator(separator);
 		
 		if(stringValue.matches("^\\s*(\\\\*" + pSep + ")+\\s*$")){
 			
@@ -100,7 +102,7 @@ public interface EnumSanitizer {
 		// Please see https://regex101.com/r/FrVwfk for an interactive testing session for this regex.
 		// Make sure to use the latest version on this website (click the v1 button to check).
 		
-		String pSep = protectSeparator(separator);
+		String pSep = Utils.protectSeparator(separator);
 		
 		String expAnyNonBreakOrSep = "[^\\n" + pSep + "]*";
 		String expAnyNonSpaceOrSep = "([^\\r\\n\\t\\f\\v "
@@ -118,17 +120,6 @@ public interface EnumSanitizer {
 		String expEnumFormat = expOnlySeparators + "|" + expValidWordsAsEnum;
 		
 		return TextRegexSanitizer.sanitizeValue(stringValue, expEnumFormat);
-		
-	}
-	
-	static String protectSeparator(char separator){
-		
-		if("<([{\\^-=$!|]})?*+.>".indexOf(separator) != -1){
-			return String.format("\\%s", separator);
-		}
-		else{
-			return String.valueOf(separator);
-		}
 		
 	}
 	
