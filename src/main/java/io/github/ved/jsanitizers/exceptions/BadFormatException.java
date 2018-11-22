@@ -1,14 +1,16 @@
 package io.github.ved.jsanitizers.exceptions;
 
 /**
- *
+ * Exception that handles formats codes to help categorize with a simple
+ * unobtrusive RunTimeException the potential format exceptions that values may
+ * give.
  */
 public class BadFormatException extends RuntimeException {
 	
 	private int code;
 	
 	/**
-	 * default error code for any {@link BadFormatException}
+	 * Default error code for any {@link BadFormatException}
 	 */
 	public static final int DEFAULT_ERROR_CODE = -1;
 	
