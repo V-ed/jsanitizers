@@ -25,7 +25,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: mvn deploy -DskipTests -P release
+  script: mvn deploy -DskipTests -B -P release
   skip_cleanup: true
   on:
     tags: true
