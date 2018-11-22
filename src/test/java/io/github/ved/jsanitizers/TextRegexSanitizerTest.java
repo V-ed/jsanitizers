@@ -170,57 +170,71 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testShouldNotBoxSimpleRegex(){
+	void testIsSubFormatSimpleRegex(){
 		
 		String value = "hi   this is other text";
 		
 		String regex = "hi";
 		
 		String result = TextRegexSanitizer.sanitizeValue(value, regex, false,
-				false);
+				true);
 		
 		assertEquals("hi   this is other text", result);
 		
 	}
 	
 	@Test
-	void testShouldNotBoxQuantifiers(){
+	void testIsSubFormatQuantifiers(){
 		
 		String value = "hi  okay!";
 		String regex = "hi!?";
 		String result = TextRegexSanitizer.sanitizeValue(value, regex, false,
-				false);
+				true);
 		assertEquals("hi  okay!", result);
 		
 		value = "hi! this works!";
-		result = TextRegexSanitizer.sanitizeValue(value, regex, false, false);
+		result = TextRegexSanitizer.sanitizeValue(value, regex, false, true);
 		assertEquals("hi! this works!", result);
 		
 	}
 	
 	@Test
-	void testShouldNotBoxProtectedQuantifiers(){
+	void testIsSubFormatProtectedQuantifiers(){
 		
 		String value = "hi? Okay!";
 		
 		String regex = "hi\\?";
 		
 		String result = TextRegexSanitizer.sanitizeValue(value, regex, false,
-				false);
+				true);
 		
 		assertEquals("hi? Okay!", result);
 		
 	}
 	
 	@Test
-	void testShouldNotBoxBadRegexPattern(){
+	void testIsSubFormatAlreadySubFormat(){
+		
+		String value = "hi? Okay!";
+		
+		String regex = ".*hi.*";
+		
+		String result = TextRegexSanitizer.sanitizeValue(value, regex, false,
+				true);
+		
+		assertEquals("hi? Okay!", result);
+		
+	}
+	
+	@Test
+	void testIsSubFormatBadRegexPattern(){
 		
 		String value = "hi this might not work...";
 		
 		String regex = "hi[";
 		
 		Executable shouldThrowPatternSyntaxException = () -> TextRegexSanitizer
-				.sanitizeValue(value, regex, false, false);
+				.sanitizeValue(value, regex, false, true);
 		
 		assertThrows(PatternSyntaxException.class,
 				shouldThrowPatternSyntaxException);
@@ -228,14 +242,14 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testShouldNotBoxFormatNotMatching(){
+	void testIsSubFormatFormatNotMatching(){
 		
 		String value = "hi this might not work...";
 		
 		String regex = "hi!";
 		
 		Executable shouldThrowBadFormatException = () -> TextRegexSanitizer
-				.sanitizeValue(value, regex, false, false);
+				.sanitizeValue(value, regex, false, true);
 		
 		BadFormatException exception = assertThrows(BadFormatException.class,
 				shouldThrowBadFormatException);

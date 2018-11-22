@@ -18,23 +18,27 @@ public interface TextRegexSanitizer {
 			boolean isInverted) throws BadFormatException,
 			PatternSyntaxException{
 		return TextRegexSanitizer.sanitizeValue(value, regexToMatch,
-				isInverted, true);
+				isInverted, false);
 	}
 	
 	static String sanitizeValue(Object value, String regexToMatch,
-			boolean isInverted, boolean shouldBox) throws BadFormatException,
+			boolean isInverted, boolean isSubFormat) throws BadFormatException,
 			PatternSyntaxException{
 		
 		String stringValue = TextSanitizer.sanitizeValue(value);
 		
 		if(regexToMatch != null){
 			
-			if(!shouldBox){
-				regexToMatch = ".*(" + regexToMatch + ").*";
+			String realRegex = regexToMatch;
+			
+			if(isSubFormat){
+				realRegex = regexToMatch.replaceAll(
+						"^(\\^)?(?!\\.\\*\\(?)(.*)(?!\\)?\\.\\*)(\\$)?$",
+						"$1.*($2).*$3");
 			}
 			
 			// Test if Regex provided is valid
-			Pattern pattern = Pattern.compile(regexToMatch);
+			Pattern pattern = Pattern.compile(realRegex);
 			
 			// Test regex and invert if we need to
 			if(pattern.matcher(stringValue).matches() == isInverted){
