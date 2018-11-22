@@ -3,7 +3,7 @@
   <servers>
     <server>
       <id>ossrh</id>
-      <username>v-ed</username>
+      <username>V-ed</username>
       <password>${env.DEPLOY_PASS}</password>
     </server>
   </servers>
