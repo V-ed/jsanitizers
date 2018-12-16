@@ -8,12 +8,14 @@ import java.util.regex.PatternSyntaxException;
 /**
  * Utility that sanitizes text objects with the condition of matching a regex.
  */
-public interface TextRegexSanitizer {
+public class TextRegexSanitizer extends TextSanitizer {
 	
 	/**
 	 * The value does not match the given regex's pattern
 	 */
-	int FORMAT_NOT_MATCHING_PATTERN = 1;
+	public static final int FORMAT_NOT_MATCHING_PATTERN = 1;
+	
+	protected TextRegexSanitizer(){}
 	
 	/**
 	 * Sanitizes any object to a String value and confirm its format using the
@@ -39,7 +41,7 @@ public interface TextRegexSanitizer {
 	 *             {@code regexToMatch}) is not a valid pattern.
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value, String regexToMatch)
+	public static String sanitizeValue(Object value, String regexToMatch)
 			throws BadFormatException, PatternSyntaxException{
 		return TextRegexSanitizer.sanitizeValue(value, regexToMatch, false);
 	}
@@ -76,7 +78,7 @@ public interface TextRegexSanitizer {
 	 *             {@code regexToMatch}) is not a valid pattern.
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value, String regexToMatch,
+	public static String sanitizeValue(Object value, String regexToMatch,
 			boolean isInverted) throws BadFormatException,
 			PatternSyntaxException{
 		return TextRegexSanitizer.sanitizeValue(value, regexToMatch,
@@ -122,7 +124,7 @@ public interface TextRegexSanitizer {
 	 *             {@code regexToMatch}) is not a valid pattern.
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value, String regexToMatch,
+	public static String sanitizeValue(Object value, String regexToMatch,
 			boolean isInverted, boolean isSubFormat) throws BadFormatException,
 			PatternSyntaxException{
 		

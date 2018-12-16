@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CharSanitizerTest {
 	
 	@Test
-	void testSingleCharLetter(){
+	void singleCharLetter(){
 		
 		String value = "a";
 		
@@ -20,7 +20,7 @@ public class CharSanitizerTest {
 	}
 	
 	@Test
-	void testSingleCharNumber(){
+	void singleCharNumber(){
 		
 		String value = "1";
 		
@@ -31,7 +31,7 @@ public class CharSanitizerTest {
 	}
 	
 	@Test
-	void testSingleCharLetterSpaces(){
+	void singleCharLetterSpaces(){
 		
 		String value = "   a   ";
 		
@@ -42,7 +42,7 @@ public class CharSanitizerTest {
 	}
 	
 	@Test
-	void testSingleCharNumberSpaces(){
+	void singleCharNumberSpaces(){
 		
 		String value = "   1   ";
 		
@@ -53,7 +53,7 @@ public class CharSanitizerTest {
 	}
 	
 	@Test
-	void testSpecialCharNumber(){
+	void specialCharNumber(){
 		
 		String value = "[";
 		
@@ -64,7 +64,7 @@ public class CharSanitizerTest {
 	}
 	
 	@Test
-	void testSpecialCharNumberSpaces(){
+	void specialCharNumberSpaces(){
 		
 		String value = "   [   ";
 		
@@ -75,7 +75,7 @@ public class CharSanitizerTest {
 	}
 	
 	@Test
-	void testEmptyValue(){
+	void emptyValue(){
 		
 		String value = "";
 		
@@ -90,7 +90,7 @@ public class CharSanitizerTest {
 	}
 	
 	@Test
-	void testTwoOrMoreChars(){
+	void twoOrMoreChars(){
 		
 		String value = "ab";
 		Executable shouldThrowBadFormatException = () -> CharSanitizer

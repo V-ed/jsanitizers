@@ -5,12 +5,14 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 /**
  * Utility that sanitizes char objects.
  */
-public interface CharSanitizer {
+public class CharSanitizer extends Sanitizer<Character> {
 	
 	/**
 	 * The value's String representation is not of length 1
 	 */
-	int FORMAT_LENGTH = 1;
+	public static final int FORMAT_LENGTH = 1;
+	
+	protected CharSanitizer(){}
 	
 	/**
 	 * Sanitizes any object's String value to convert to a char. Throws a
@@ -31,7 +33,7 @@ public interface CharSanitizer {
 	 *             representation is not of length 1.</li>
 	 *             </ul>
 	 */
-	static char sanitizeValue(Object value) throws BadFormatException{
+	public static char sanitizeValue(Object value) throws BadFormatException{
 		
 		try{
 			

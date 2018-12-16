@@ -3,7 +3,9 @@ package io.github.ved.jsanitizers;
 /**
  * Utility that sanitizes text objects. handles {@code null} objects too.
  */
-public interface TextSanitizer {
+public class TextSanitizer extends Sanitizer<String> {
+	
+	protected TextSanitizer(){}
 	
 	/**
 	 * Sanitizes any object to a String value (using the object's
@@ -15,7 +17,7 @@ public interface TextSanitizer {
 	 * @return The String value of the object given as parameter. If the value
 	 *         is {@code null}, it returns an empty String ({@code ""}).
 	 */
-	static String sanitizeValue(Object value){
+	public static String sanitizeValue(Object value){
 		
 		if(value == null)
 			return "";

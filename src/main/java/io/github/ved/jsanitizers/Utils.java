@@ -7,21 +7,21 @@ public interface Utils {
 	
 	/**
 	 * Protects a character from being used in a regex with the protection char
-	 * "%".
+	 * "\".
 	 * 
-	 * @param separator
-	 *            The separator to protect.
+	 * @param character
+	 *            The character to protect.
 	 * @return A string with the protected separator if it was potentially
 	 *         dangerous in a regex, of the direct String representation of the
 	 *         char if no protection was needed.
 	 */
-	static String protectSeparator(char separator){
+	static String protectRegexChar(char character){
 		
-		if("<([{\\^-=$!|]})?*+.>".indexOf(separator) != -1){
-			return String.format("\\%s", separator);
+		if(Character.isLetter(character)){
+			return String.valueOf(character);
 		}
 		else{
-			return String.valueOf(separator);
+			return String.format("\\%s", character);
 		}
 		
 	}

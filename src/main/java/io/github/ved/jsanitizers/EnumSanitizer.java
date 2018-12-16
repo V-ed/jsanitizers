@@ -12,17 +12,19 @@ import java.util.List;
  * starts from a string, gets extracted, then verifies if the objects is
  * contained in the extract list.
  */
-public interface EnumSanitizer {
+public class EnumSanitizer extends Sanitizer<Enum> {
 	
 	/**
 	 * String value is not accepted as an enum definition
 	 */
-	int FORMAT_NOT_ACCEPTED = TextRegexSanitizer.FORMAT_NOT_MATCHING_PATTERN;
+	public static final int FORMAT_NOT_ACCEPTED = TextRegexSanitizer.FORMAT_NOT_MATCHING_PATTERN;
 	
 	/**
 	 * Value is not present in the list given
 	 */
-	int FORMAT_NOT_A_CHOICE = 2;
+	public static final int FORMAT_NOT_A_CHOICE = 2;
+	
+	protected EnumSanitizer(){}
 	
 	/**
 	 * Sanitizes any object's String value to verify if it is present in the
@@ -49,7 +51,7 @@ public interface EnumSanitizer {
 	 *             your value without any testing beforehand.
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value, String... values)
+	public static String sanitizeValue(Object value, String... values)
 			throws BadFormatException, IllegalArgumentException{
 		return EnumSanitizer.sanitizeValue(value,
 				new ArrayList<>(Arrays.asList(values)));
@@ -80,7 +82,7 @@ public interface EnumSanitizer {
 	 *             your value without any testing beforehand.
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value, List<String> values)
+	public static String sanitizeValue(Object value, List<String> values)
 			throws BadFormatException, IllegalArgumentException{
 		
 		if(values.size() == 0){
@@ -129,7 +131,7 @@ public interface EnumSanitizer {
 	 * @see #extractEnumFromString(String, char)
 	 * @see #verifyStringFormat(String, char)
 	 */
-	static List<String> extractEnumFromString(String stringValue)
+	public static List<String> extractEnumFromString(String stringValue)
 			throws BadFormatException{
 		return EnumSanitizer.extractEnumFromString(stringValue, '|');
 	}
@@ -168,14 +170,14 @@ public interface EnumSanitizer {
 	 *             {@link #FORMAT_NOT_ACCEPTED}.
 	 * @see #verifyStringFormat(String, char)
 	 */
-	static List<String> extractEnumFromString(String stringValue, char separator)
-			throws BadFormatException{
+	public static List<String> extractEnumFromString(String stringValue,
+			char separator) throws BadFormatException{
 		
 		// Verify that string is of format "[...]| [...] | [...]" while allowing single choice enums.
 		// ~ Resetting stringValue here was not necessary, but this will make it future-proof ~
 		stringValue = EnumSanitizer.verifyStringFormat(stringValue, separator);
 		
-		String pSep = Utils.protectSeparator(separator);
+		String pSep = Utils.protectRegexChar(separator);
 		
 		if(stringValue.matches("^\\s*(\\\\*" + pSep + ")+\\s*$")){
 			
@@ -254,13 +256,13 @@ public interface EnumSanitizer {
 	 *             separation format. The error code will be
 	 *             {@link #FORMAT_NOT_ACCEPTED}.
 	 */
-	static String verifyStringFormat(String stringValue, char separator)
-			throws BadFormatException{
+	protected static String verifyStringFormat(String stringValue,
+			char separator) throws BadFormatException{
 		
 		// Please see https://regex101.com/r/FrVwfk for an interactive testing session for this regex.
 		// Make sure to use the latest version on this website (click the v1 button to check).
 		
-		String pSep = Utils.protectSeparator(separator);
+		String pSep = Utils.protectRegexChar(separator);
 		
 		String expAnyNonBreakOrSep = "[^\\n" + pSep + "]*";
 		String expAnyNonSpaceOrSep = "([^\\r\\n\\t\\f\\v "

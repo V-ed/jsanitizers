@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TextLengthSanitizerTest {
 	
 	@Test
-	void testStringWithinBounds(){
+	void stringWithinBounds(){
 		
 		String value = "hi";
 		
@@ -20,7 +20,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringMinBoundOnly(){
+	void stringMinBoundOnly(){
 		
 		String value = "hi";
 		
@@ -31,7 +31,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringMaxBoundOnly(){
+	void stringMaxBoundOnly(){
 		
 		String value = "hi";
 		
@@ -42,7 +42,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringSingleLength(){
+	void stringSingleLength(){
 		
 		String value = "hi";
 		
@@ -53,7 +53,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringSingleLengthAbove(){
+	void stringSingleLengthAbove(){
 		
 		String value = "hi";
 		
@@ -69,7 +69,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringSingleLengthUnder(){
+	void stringSingleLengthUnder(){
 		
 		String value = "hi";
 		
@@ -85,7 +85,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringBelowBounds(){
+	void stringBelowBounds(){
 		
 		String value = "hi";
 		
@@ -101,7 +101,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringAboveBounds(){
+	void stringAboveBounds(){
 		
 		String value = "hi there";
 		
@@ -117,7 +117,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringBelowBoundsMinBoundOnly(){
+	void stringBelowBoundsMinBoundOnly(){
 		
 		String value = "hi";
 		
@@ -133,7 +133,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringAboveBoundsMaxBoundOnly(){
+	void stringAboveBoundsMaxBoundOnly(){
 		
 		String value = "hi there";
 		
@@ -149,7 +149,7 @@ public class TextLengthSanitizerTest {
 	}
 	
 	@Test
-	void testStringMinBoundLowerThanMaxBound(){
+	void stringMinBoundLowerThanMaxBound(){
 		
 		String value = "hi here";
 		

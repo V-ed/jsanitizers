@@ -14,7 +14,7 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 class EnumSanitizerTest {
 	
 	@Test
-	void testSanitizeWithArray(){
+	void sanitizeWithArray(){
 		
 		String value = "test";
 		
@@ -30,7 +30,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSanitizeWithList(){
+	void sanitizeWithList(){
 		
 		String value = "test";
 		
@@ -47,7 +47,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSanitizeWithArrayNotPresent(){
+	void sanitizeWithArrayNotPresent(){
 		
 		String value = "test";
 		
@@ -68,7 +68,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSanitizeWithListNotPresent(){
+	void sanitizeWithListNotPresent(){
 		
 		String value = "test";
 		
@@ -89,7 +89,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSanitizeWithArrayEmpty(){
+	void sanitizeWithArrayEmpty(){
 		
 		String value = "test";
 		
@@ -104,7 +104,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSanitizeWithListEmpty(){
+	void sanitizeWithListEmpty(){
 		
 		String value = "test";
 		
@@ -119,7 +119,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueNoSpace(){
+	void singleValueNoSpace(){
 		
 		String value = "Hello!";
 		
@@ -131,7 +131,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSpaces(){
+	void singleValueSpaces(){
 		
 		String value = "Hello fellow kid!";
 		
@@ -143,7 +143,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueTabs(){
+	void singleValueTabs(){
 		
 		String value = "Hello\tfellow\tkid!";
 		
@@ -155,7 +155,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSpacesAndTabs(){
+	void singleValueSpacesAndTabs(){
 		
 		String value = "Hello\t fellow \t kid!";
 		
@@ -167,7 +167,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueTrailingSpaces(){
+	void singleValueTrailingSpaces(){
 		
 		String value = "  Hello!  ";
 		
@@ -179,7 +179,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueTrailingTabs(){
+	void singleValueTrailingTabs(){
 		
 		String value = "\tHello!\t";
 		
@@ -191,7 +191,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSeparatorOnly(){
+	void singleValueSeparatorOnly(){
 		
 		String value = "|";
 		
@@ -203,7 +203,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSeparatorOnlyProtected(){
+	void singleValueSeparatorOnlyProtected(){
 		
 		String value = "\\|";
 		
@@ -215,7 +215,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSeparatorOnlyMultiple(){
+	void singleValueSeparatorOnlyMultiple(){
 		
 		String value = "||||";
 		
@@ -227,7 +227,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSeparatorOnlyCustom(){
+	void singleValueSeparatorOnlyCustom(){
 		
 		String value = "[";
 		
@@ -239,7 +239,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSeparatorOnlyProtectedCustom(){
+	void singleValueSeparatorOnlyProtectedCustom(){
 		
 		String value = "\\[";
 		
@@ -251,7 +251,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueSeparatorOnlyMultipleCustom(){
+	void singleValueSeparatorOnlyMultipleCustom(){
 		
 		String value = "[[[[";
 		
@@ -263,7 +263,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectionSyntax(){
+	void singleValueProtectionSyntax(){
 		
 		String value = "\\\\||\\";
 		
@@ -276,7 +276,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectionSyntaxCustom(){
+	void singleValueProtectionSyntaxCustom(){
 		
 		String value = "\\\\[[\\";
 		
@@ -289,7 +289,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectionSyntaxProtector(){
+	void singleValueProtectionSyntaxProtector(){
 		
 		String value = "\\\\\\ \\ \\\\";
 		
@@ -302,7 +302,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectionSyntax2(){
+	void singleValueProtectionSyntax2(){
 		
 		String value = "\\\\| | \\|";
 		
@@ -315,7 +315,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesNoSpace(){
+	void multipleValuesNoSpace(){
 		
 		String value = "First|Second|Third";
 		
@@ -329,7 +329,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesSpaces(){
+	void multipleValuesSpaces(){
 		
 		String value = "First  |  Second  |  Third";
 		
@@ -343,7 +343,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesTabs(){
+	void multipleValuesTabs(){
 		
 		String value = "First\t|\tSecond\t|\tThird";
 		
@@ -357,7 +357,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesSpacesAndTabs(){
+	void multipleValuesSpacesAndTabs(){
 		
 		String value = "First\t  | \t Second \t  |\t  Third";
 		
@@ -371,7 +371,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedBar(){
+	void singleValueProtectedBar(){
 		
 		String value = "Hello \\| World";
 		
@@ -383,7 +383,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBar(){
+	void multipleValuesProtectedBar(){
 		
 		String value = "First \\| Second | Third";
 		
@@ -396,7 +396,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarOnlyStart(){
+	void multipleValuesProtectedBarOnlyStart(){
 		
 		String value = "\\| | Second";
 		
@@ -409,7 +409,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarOnlyEnd(){
+	void multipleValuesProtectedBarOnlyEnd(){
 		
 		String value = "First | \\|";
 		
@@ -422,7 +422,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedProtectedBar(){
+	void singleValueProtectedProtectedBar(){
 		
 		String value = "Hello \\\\| World";
 		
@@ -434,7 +434,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedProtectedBar(){
+	void multipleValuesProtectedProtectedBar(){
 		
 		String value = "First \\\\| Second | Third";
 		
@@ -447,7 +447,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testRegexCharInValue(){
+	void regexCharInValue(){
 		
 		String value = "First | Se[ond";
 		
@@ -460,7 +460,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSeparatorRegexChar(){
+	void separatorRegexChar(){
 		
 		String value = "First [ Second";
 		
@@ -473,7 +473,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSeparatorRegexCharAndRegexInValue(){
+	void separatorRegexCharAndRegexInValue(){
 		
 		String value = "First [ Secon]";
 		
@@ -486,7 +486,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedBarRegexSeparator(){
+	void singleValueProtectedBarRegexSeparator(){
 		
 		String value = "Hello \\[ World";
 		
@@ -498,7 +498,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarRegexSeparator(){
+	void multipleValuesProtectedBarRegexSeparator(){
 		
 		String value = "First \\[ Second [ Third";
 		
@@ -511,7 +511,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarRegexSeparatorOnlyStart(){
+	void multipleValuesProtectedBarRegexSeparatorOnlyStart(){
 		
 		String value = "\\[ [ Second";
 		
@@ -524,7 +524,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarRegexSeparatorOnlyEnd(){
+	void multipleValuesProtectedBarRegexSeparatorOnlyEnd(){
 		
 		String value = "First [ \\[";
 		
@@ -537,7 +537,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedProtectedBarRegexSeparator(){
+	void singleValueProtectedProtectedBarRegexSeparator(){
 		
 		String value = "Hello \\\\[ World";
 		
@@ -549,7 +549,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedProtectedBarRegexSeparator(){
+	void multipleValuesProtectedProtectedBarRegexSeparator(){
 		
 		String value = "First \\\\[ Second [ Third";
 		
@@ -562,7 +562,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesNoSpaceLetter(){
+	void multipleValuesNoSpaceLetter(){
 		
 		String value = "FirstlSecondlThird";
 		
@@ -576,7 +576,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesSpacesLetter(){
+	void multipleValuesSpacesLetter(){
 		
 		String value = "First  l  Second  l  Third";
 		
@@ -590,7 +590,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesTabsLetter(){
+	void multipleValuesTabsLetter(){
 		
 		String value = "First\tl\tSecond\tl\tThird";
 		
@@ -604,7 +604,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesSpacesAndTabsLetter(){
+	void multipleValuesSpacesAndTabsLetter(){
 		
 		String value = "First\t  l \t Second \t  l\t  Third";
 		
@@ -618,7 +618,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedBarLetter(){
+	void singleValueProtectedBarLetter(){
 		
 		String value = "He\\l\\lo \\l Wor\\ld";
 		
@@ -630,7 +630,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarLetter(){
+	void multipleValuesProtectedBarLetter(){
 		
 		String value = "First \\l Second l Third";
 		
@@ -643,7 +643,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarOnlyStartLetter(){
+	void multipleValuesProtectedBarOnlyStartLetter(){
 		
 		String value = "\\l l Second";
 		
@@ -656,7 +656,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedBarOnlyEndLetter(){
+	void multipleValuesProtectedBarOnlyEndLetter(){
 		
 		String value = "First l \\l";
 		
@@ -669,7 +669,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedProtectedBarLetter(){
+	void singleValueProtectedProtectedBarLetter(){
 		
 		String value = "He\\l\\lo \\\\l Wor\\ld";
 		
@@ -681,7 +681,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedProtectedBarLetter(){
+	void multipleValuesProtectedProtectedBarLetter(){
 		
 		String value = "First \\\\l Second l Third";
 		
@@ -694,7 +694,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesNoSpaceProtectorSeparator(){
+	void multipleValuesNoSpaceProtectorSeparator(){
 		
 		String value = "First\\Second\\Third";
 		
@@ -708,7 +708,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesSpacesProtectorSeparator(){
+	void multipleValuesSpacesProtectorSeparator(){
 		
 		String value = "First  \\  Second  \\  Third";
 		
@@ -722,7 +722,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesTabsProtectorSeparator(){
+	void multipleValuesTabsProtectorSeparator(){
 		
 		String value = "First\t\\\tSecond\t\\\tThird";
 		
@@ -736,7 +736,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesSpacesAndTabsProtectorSeparator(){
+	void multipleValuesSpacesAndTabsProtectorSeparator(){
 		
 		String value = "First\t  \\ \t Second \t  \\\t  Third";
 		
@@ -750,7 +750,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedProtectorSeparator(){
+	void singleValueProtectedProtectorSeparator(){
 		
 		String value = "Hello \\\\ World";
 		
@@ -762,7 +762,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedProtectorSeparator(){
+	void multipleValuesProtectedProtectorSeparator(){
 		
 		String value = "First \\\\ Second \\ Third";
 		
@@ -775,7 +775,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedOnlyStartProtectorSeparator(){
+	void multipleValuesProtectedOnlyStartProtectorSeparator(){
 		
 		String value = "\\\\ \\ Second";
 		
@@ -788,7 +788,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedOnlyEndProtectorSeparator(){
+	void multipleValuesProtectedOnlyEndProtectorSeparator(){
 		
 		String value = "First \\ \\\\";
 		
@@ -801,7 +801,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedProtectedProtectorSeparator(){
+	void singleValueProtectedProtectedProtectorSeparator(){
 		
 		String value = "Hello \\\\\\ World";
 		
@@ -813,7 +813,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedProtectedProtectorSeparatorBig(){
+	void singleValueProtectedProtectedProtectorSeparatorBig(){
 		
 		String value = "Hello \\\\\\\\\\\\\\ World";
 		
@@ -825,7 +825,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedTwice(){
+	void singleValueProtectedTwice(){
 		
 		String value = "Hello \\| \\| World";
 		
@@ -837,7 +837,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testSingleValueProtectedProtectedProtectorSeparatorTwice(){
+	void singleValueProtectedProtectedProtectorSeparatorTwice(){
 		
 		String value = "Hello \\\\ \\\\ World";
 		
@@ -849,7 +849,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesProtectedProtectedBarProtectorSeparator(){
+	void multipleValuesProtectedProtectedBarProtectorSeparator(){
 		
 		String value = "First \\\\\\ Second \\ Third";
 		
@@ -862,7 +862,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testEmptyValue(){
+	void emptyValue(){
 		
 		String value = "";
 		
@@ -878,7 +878,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormat1(){
+	void multipleValuesBadFormat1(){
 		
 		String value = "First|";
 		
@@ -894,7 +894,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormat2(){
+	void multipleValuesBadFormat2(){
 		
 		String value = "First||Third";
 		
@@ -910,7 +910,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormat3(){
+	void multipleValuesBadFormat3(){
 		
 		String value = "First|  |Third";
 		
@@ -926,7 +926,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormat4(){
+	void multipleValuesBadFormat4(){
 		
 		String value = "First|Second|";
 		
@@ -942,7 +942,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormat5(){
+	void multipleValuesBadFormat5(){
 		
 		String value = "|First|Second";
 		
@@ -958,7 +958,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormat6(){
+	void multipleValuesBadFormat6(){
 		
 		String value = "    |First";
 		
@@ -974,7 +974,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormat7(){
+	void multipleValuesBadFormat7(){
 		
 		String value = "First|    ";
 		
@@ -990,7 +990,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormatCustomSep1(){
+	void multipleValuesBadFormatCustomSep1(){
 		
 		String value = "First[";
 		
@@ -1006,7 +1006,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormatCustomSep2(){
+	void multipleValuesBadFormatCustomSep2(){
 		
 		String value = "First[[Third";
 		
@@ -1022,7 +1022,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormatCustomSep3(){
+	void multipleValuesBadFormatCustomSep3(){
 		
 		String value = "First[  [Third";
 		
@@ -1038,7 +1038,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormatCustomSep4(){
+	void multipleValuesBadFormatCustomSep4(){
 		
 		String value = "First[Second[";
 		
@@ -1054,7 +1054,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormatCustomSep5(){
+	void multipleValuesBadFormatCustomSep5(){
 		
 		String value = "[First[Second";
 		
@@ -1070,7 +1070,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormatCustomSep6(){
+	void multipleValuesBadFormatCustomSep6(){
 		
 		String value = "    [First";
 		
@@ -1086,7 +1086,7 @@ class EnumSanitizerTest {
 	}
 	
 	@Test
-	void testMultipleValuesBadFormatCustomSep7(){
+	void multipleValuesBadFormatCustomSep7(){
 		
 		String value = "First[    ";
 		

@@ -5,17 +5,19 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 /**
  * Utility that sanitizes boolean objects.
  */
-public interface BooleanSanitizer {
+public class BooleanSanitizer extends Sanitizer<Boolean> {
 	
 	/**
 	 * The value is empty
 	 */
-	int FORMAT_EMPTY = TextNotEmptySanitizer.FORMAT_EMPTY;
+	public static final int FORMAT_EMPTY = TextNotEmptySanitizer.FORMAT_EMPTY;
 	
 	/**
 	 * The value is not a boolean (after being parsed)
 	 */
-	int FORMAT_NOT_BOOLEAN = 2;
+	public static final int FORMAT_NOT_BOOLEAN = 2;
+	
+	protected BooleanSanitizer(){}
 	
 	/**
 	 * Sanitizes any object's String value to convert to a boolean. Throws a
@@ -37,7 +39,7 @@ public interface BooleanSanitizer {
 	 *             boolean (after being parsed)</li>
 	 *             </ul>
 	 */
-	static boolean sanitizeValue(Object value) throws BadFormatException{
+	public static boolean sanitizeValue(Object value) throws BadFormatException{
 		
 		String stringValue = TextNotEmptySanitizer.sanitizeValue(value);
 		

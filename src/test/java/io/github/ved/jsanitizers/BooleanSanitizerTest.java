@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BooleanSanitizerTest {
 	
 	@Test
-	void testTrueUnderscore(){
+	void trueUnderscore(){
 		
 		String value = "true";
 		
@@ -20,7 +20,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testTrueUnderscoreWithSpaces(){
+	void trueUnderscoreWithSpaces(){
 		
 		String value = "   true   ";
 		
@@ -31,7 +31,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testTrueUppercase(){
+	void trueUppercase(){
 		
 		String value = "TRUE";
 		
@@ -42,7 +42,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testTrueFunkyCase(){
+	void trueFunkyCase(){
 		
 		String value = "tRuE";
 		boolean result = BooleanSanitizer.sanitizeValue(value);
@@ -59,7 +59,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testFalseUnderscore(){
+	void falseUnderscore(){
 		
 		String value = "false";
 		
@@ -70,7 +70,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testFalseUppercase(){
+	void falseUppercase(){
 		
 		String value = "FALSE";
 		
@@ -81,7 +81,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testFalseFunkyCase(){
+	void falseFunkyCase(){
 		
 		String value = "FalsE";
 		boolean result = BooleanSanitizer.sanitizeValue(value);
@@ -98,7 +98,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testNonBoolean(){
+	void nonBoolean(){
 		
 		String value = "other";
 		
@@ -114,7 +114,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testStartsWithTrue(){
+	void startsWithTrue(){
 		
 		String value = "true stuff";
 		
@@ -130,7 +130,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testEndsWithFalse(){
+	void endsWithFalse(){
 		
 		String value = "stuff is false";
 		
@@ -146,7 +146,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testStartsWithFalse(){
+	void startsWithFalse(){
 		
 		String value = "false stuff";
 		
@@ -162,7 +162,7 @@ public class BooleanSanitizerTest {
 	}
 	
 	@Test
-	void testEndsWithTrue(){
+	void endsWithTrue(){
 		
 		String value = "stuff is true";
 		
