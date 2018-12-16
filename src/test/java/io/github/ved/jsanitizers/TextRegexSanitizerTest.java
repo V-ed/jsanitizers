@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TextRegexSanitizerTest {
 	
 	@Test
-	void testSimpleRegex(){
+	void simpleRegex(){
 		
 		String value = "hi";
 		
@@ -24,7 +24,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testQuantifiers(){
+	void quantifiers(){
 		
 		String value = "hi";
 		String regex = "hi!?";
@@ -38,7 +38,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testProtectedQuantifiers(){
+	void protectedQuantifiers(){
 		
 		String value = "hi?";
 		
@@ -51,7 +51,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testBadRegexPattern(){
+	void badRegexPattern(){
 		
 		String value = "hi";
 		
@@ -66,7 +66,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testFormatNotMatching(){
+	void formatNotMatching(){
 		
 		String value = "hi";
 		
@@ -84,7 +84,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testInvertedSimpleRegex(){
+	void invertedSimpleRegex(){
 		
 		String value = "hi";
 		
@@ -102,7 +102,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testInvertedQuantifiers(){
+	void invertedQuantifiers(){
 		
 		String value = "hi";
 		String regex = "hi!?";
@@ -124,7 +124,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testInvertedProtectedQuantifiers(){
+	void invertedProtectedQuantifiers(){
 		
 		String value = "hi?";
 		
@@ -142,7 +142,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testInvertedBadRegexPattern(){
+	void invertedBadRegexPattern(){
 		
 		String value = "hi";
 		
@@ -157,7 +157,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testInvertedFormatNotMatching(){
+	void invertedFormatNotMatching(){
 		
 		String value = "hi";
 		
@@ -170,7 +170,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testIsSubFormatSimpleRegex(){
+	void isSubFormatSimpleRegex(){
 		
 		String value = "hi   this is other text";
 		
@@ -184,7 +184,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testIsSubFormatQuantifiers(){
+	void isSubFormatQuantifiers(){
 		
 		String value = "hi  okay!";
 		String regex = "hi!?";
@@ -199,7 +199,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testIsSubFormatProtectedQuantifiers(){
+	void isSubFormatProtectedQuantifiers(){
 		
 		String value = "hi? Okay!";
 		
@@ -213,7 +213,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testIsSubFormatAlreadySubFormat(){
+	void isSubFormatAlreadySubFormat(){
 		
 		String value = "hi? Okay!";
 		
@@ -227,7 +227,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testIsSubFormatBadRegexPattern(){
+	void isSubFormatBadRegexPattern(){
 		
 		String value = "hi this might not work...";
 		
@@ -242,7 +242,7 @@ public class TextRegexSanitizerTest {
 	}
 	
 	@Test
-	void testIsSubFormatFormatNotMatching(){
+	void isSubFormatFormatNotMatching(){
 		
 		String value = "hi this might not work...";
 		

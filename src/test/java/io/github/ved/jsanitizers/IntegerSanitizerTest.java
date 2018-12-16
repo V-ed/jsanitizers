@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class IntegerSanitizerTest {
 	
 	@Test
-	void testSimpleNumber(){
+	void simpleNumber(){
 		
 		String value = "1";
 		
@@ -21,7 +21,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumber(){
+	void highNumber(){
 		
 		String value = "123456";
 		
@@ -32,7 +32,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegative(){
+	void simpleNumberNegative(){
 		
 		String value = "-1";
 		
@@ -43,7 +43,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeWithSpace(){
+	void simpleNumberNegativeWithSpace(){
 		
 		String value = "- 1";
 		
@@ -54,7 +54,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeWithFunkySpaces(){
+	void simpleNumberNegativeWithFunkySpaces(){
 		
 		String value = "-   \t  1";
 		
@@ -65,7 +65,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegative(){
+	void highNumberNegative(){
 		
 		String value = "-123456";
 		
@@ -76,7 +76,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeWithSpace(){
+	void highNumberNegativeWithSpace(){
 		
 		String value = "- 123456";
 		
@@ -87,7 +87,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeWithFunkySpaces(){
+	void highNumberNegativeWithFunkySpaces(){
 		
 		String value = "-   \t  123456";
 		
@@ -98,7 +98,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testEmptyValue(){
+	void emptyValue(){
 		
 		String value = "";
 		
@@ -113,7 +113,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testTextOnly(){
+	void textOnly(){
 		
 		String value = "This is not ok";
 		
@@ -129,7 +129,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberMaxed(){
+	void simpleNumberMaxed(){
 		
 		String value = "1";
 		
@@ -140,7 +140,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberMaxed(){
+	void highNumberMaxed(){
 		
 		String value = "123456";
 		
@@ -151,7 +151,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeMaxed(){
+	void simpleNumberNegativeMaxed(){
 		
 		String value = "-1";
 		
@@ -162,7 +162,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeWithSpaceMaxed(){
+	void simpleNumberNegativeWithSpaceMaxed(){
 		
 		String value = "- 1";
 		
@@ -173,7 +173,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeWithFunkySpacesMaxed(){
+	void simpleNumberNegativeWithFunkySpacesMaxed(){
 		
 		String value = "-   \t  1";
 		
@@ -184,7 +184,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeMaxed(){
+	void highNumberNegativeMaxed(){
 		
 		String value = "-123456";
 		
@@ -195,7 +195,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeWithSpaceMaxed(){
+	void highNumberNegativeWithSpaceMaxed(){
 		
 		String value = "- 123456";
 		
@@ -206,7 +206,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeWithFunkySpacesMaxed(){
+	void highNumberNegativeWithFunkySpacesMaxed(){
 		
 		String value = "-   \t  123456";
 		
@@ -217,7 +217,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testEmptyValueMaxed(){
+	void emptyValueMaxed(){
 		
 		String value = "";
 		
@@ -232,7 +232,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testTextOnlyMaxed(){
+	void textOnlyMaxed(){
 		
 		String value = "This is not ok";
 		
@@ -248,7 +248,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testAboveMaxed(){
+	void aboveMaxed(){
 		
 		String value = "10";
 		
@@ -264,7 +264,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberMined(){
+	void simpleNumberMined(){
 		
 		String value = "1";
 		
@@ -275,7 +275,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberMined(){
+	void highNumberMined(){
 		
 		String value = "123456";
 		
@@ -286,7 +286,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeMined(){
+	void simpleNumberNegativeMined(){
 		
 		String value = "-1";
 		
@@ -297,7 +297,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeWithSpaceMined(){
+	void simpleNumberNegativeWithSpaceMined(){
 		
 		String value = "- 1";
 		
@@ -308,7 +308,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testSimpleNumberNegativeWithFunkySpacesMined(){
+	void simpleNumberNegativeWithFunkySpacesMined(){
 		
 		String value = "-   \t  1";
 		
@@ -319,7 +319,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeMined(){
+	void highNumberNegativeMined(){
 		
 		String value = "-123456";
 		
@@ -330,7 +330,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeWithSpaceMined(){
+	void highNumberNegativeWithSpaceMined(){
 		
 		String value = "- 123456";
 		
@@ -341,7 +341,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testHighNumberNegativeWithFunkySpacesMined(){
+	void highNumberNegativeWithFunkySpacesMined(){
 		
 		String value = "-   \t  123456";
 		
@@ -352,7 +352,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testEmptyValueMined(){
+	void emptyValueMined(){
 		
 		String value = "";
 		
@@ -367,7 +367,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testTextOnlyMined(){
+	void textOnlyMined(){
 		
 		String value = "This is not ok";
 		
@@ -383,7 +383,7 @@ public class IntegerSanitizerTest {
 	}
 	
 	@Test
-	void testUnderMined(){
+	void underMined(){
 		
 		String value = "5";
 		

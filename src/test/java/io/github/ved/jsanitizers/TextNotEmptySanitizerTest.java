@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TextNotEmptySanitizerTest {
 	
 	@Test
-	void testString(){
+	void string(){
 		
 		String value = "hi";
 		
@@ -20,7 +20,7 @@ public class TextNotEmptySanitizerTest {
 	}
 	
 	@Test
-	void testStringLeadingSpaces(){
+	void stringLeadingSpaces(){
 		
 		String value = "     hi";
 		
@@ -31,7 +31,7 @@ public class TextNotEmptySanitizerTest {
 	}
 	
 	@Test
-	void testEmptyValue(){
+	void emptyValue(){
 		
 		String value = "";
 		
@@ -47,7 +47,7 @@ public class TextNotEmptySanitizerTest {
 	}
 	
 	@Test
-	void testOnlySpaces(){
+	void onlySpaces(){
 		
 		String value = "         ";
 		
@@ -63,7 +63,7 @@ public class TextNotEmptySanitizerTest {
 	}
 	
 	@Test
-	void testOnlyFunkySpaces(){
+	void onlyFunkySpaces(){
 		
 		String value = " \t \t  \t   ";
 		

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TextSanitizerTest {
 	
 	@Test
-	void testNull(){
+	void nullValue(){
 		
 		String value = null;
 		
@@ -18,7 +18,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testString(){
+	void stringValue(){
 		
 		String value = "hi";
 		
@@ -29,7 +29,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testInteger(){
+	void integerValue(){
 		
 		int value = 123;
 		
@@ -40,7 +40,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testChar(){
+	void charValue(){
 		
 		char value = 'a';
 		
@@ -51,7 +51,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testDouble(){
+	void doubleValue(){
 		
 		double value = 2.023;
 		
@@ -62,7 +62,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testFloat(){
+	void floatValue(){
 		
 		float value = 2.023f;
 		
@@ -73,7 +73,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testByte(){
+	void byteValue(){
 		
 		byte value = 12;
 		
@@ -84,7 +84,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testShort(){
+	void shortValue(){
 		
 		short value = 123;
 		
@@ -95,7 +95,7 @@ public class TextSanitizerTest {
 	}
 	
 	@Test
-	void testObject(){
+	void objectValue(){
 		
 		Object value = new Object(){
 			@Override
