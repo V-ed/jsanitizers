@@ -6,7 +6,7 @@ jdk:
 sudo: false
 
 stages:
-  - name: after_sucess
+  - name: after_success
     if: branch = master
 
 env:
