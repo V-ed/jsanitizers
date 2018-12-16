@@ -2,12 +2,14 @@ package io.github.ved.jsanitizers;
 
 import io.github.ved.jsanitizers.exceptions.BadFormatException;
 
-public interface TextNotEmptySanitizer {
+public class TextNotEmptySanitizer extends TextSanitizer {
 	
 	/**
 	 * if the value is null or is of length 0
 	 */
-	int FORMAT_EMPTY = 1;
+	public static final int FORMAT_EMPTY = 1;
+	
+	protected TextNotEmptySanitizer(){}
 	
 	/**
 	 * Sanitizes any object to a String value that cannot be empty (of length
@@ -26,7 +28,7 @@ public interface TextNotEmptySanitizer {
 	 *             </ul>
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value) throws BadFormatException{
+	public static String sanitizeValue(Object value) throws BadFormatException{
 		
 		String stringValue = TextSanitizer.sanitizeValue(value);
 		

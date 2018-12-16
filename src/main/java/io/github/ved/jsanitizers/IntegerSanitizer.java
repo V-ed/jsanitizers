@@ -5,27 +5,29 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 /**
  * Utility that sanitizes integer objects.
  */
-public interface IntegerSanitizer {
+public class IntegerSanitizer extends Sanitizer<Integer> {
 	
 	/**
 	 * The value's String representation is empty (either null or of length 0)
 	 */
-	int FORMAT_EMPTY = TextNotEmptySanitizer.FORMAT_EMPTY;
+	public static final int FORMAT_EMPTY = TextNotEmptySanitizer.FORMAT_EMPTY;
 	
 	/**
 	 * The value is not a number
 	 */
-	int FORMAT_NOT_A_NUMBER = 2;
+	public static final int FORMAT_NOT_A_NUMBER = 2;
 	
 	/**
 	 * The value's number is lesser than the minimum required
 	 */
-	int FORMAT_LOWER_THAN_MIN = 3;
+	public static final int FORMAT_LOWER_THAN_MIN = 3;
 	
 	/**
 	 * The value's number is higher than the maximum required
 	 */
-	int FORMAT_HIGHER_THAN_MAX = 4;
+	public static final int FORMAT_HIGHER_THAN_MAX = 4;
+	
+	protected IntegerSanitizer(){}
 	
 	/**
 	 * Sanitizes any object's String value to convert to an int. Throws a

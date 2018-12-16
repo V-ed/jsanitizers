@@ -5,17 +5,19 @@ import io.github.ved.jsanitizers.exceptions.BadFormatException;
 /**
  * Utility that sanitizes text objects with a certain length condition.
  */
-public interface TextLengthSanitizer {
+public class TextLengthSanitizer extends TextSanitizer {
 	
 	/**
 	 * The value's String length is lower than the minimum required
 	 */
-	int FORMAT_MIN_LENGTH = 1;
+	public static final int FORMAT_MIN_LENGTH = 1;
 	
 	/**
 	 * The value's String length is higher than the maximum required
 	 */
-	int FORMAT_MAX_LENGTH = 2;
+	public static final int FORMAT_MAX_LENGTH = 2;
+	
+	protected TextLengthSanitizer(){}
 	
 	/**
 	 * Sanitizes any object to a String value with a length that is at least the
@@ -37,7 +39,7 @@ public interface TextLengthSanitizer {
 	 *             </ul>
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValueMin(Object value, int minLength)
+	public static String sanitizeValueMin(Object value, int minLength)
 			throws BadFormatException{
 		return TextLengthSanitizer.sanitizeValue(value, minLength,
 				Integer.MAX_VALUE);
@@ -63,7 +65,7 @@ public interface TextLengthSanitizer {
 	 *             </ul>
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValueMax(Object value, int maxLength)
+	public static String sanitizeValueMax(Object value, int maxLength)
 			throws BadFormatException{
 		return TextLengthSanitizer.sanitizeValue(value, Integer.MIN_VALUE,
 				maxLength);
@@ -91,7 +93,7 @@ public interface TextLengthSanitizer {
 	 *             </ul>
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value, int length)
+	public static String sanitizeValue(Object value, int length)
 			throws BadFormatException{
 		return TextLengthSanitizer.sanitizeValue(value, length, length);
 	}
@@ -124,8 +126,8 @@ public interface TextLengthSanitizer {
 	 *             bigger than the {@code maxLength} parameter's integer value.
 	 * @see TextSanitizer
 	 */
-	static String sanitizeValue(Object value, int minLength, int maxLength)
-			throws BadFormatException, IllegalArgumentException{
+	public static String sanitizeValue(Object value, int minLength,
+			int maxLength) throws BadFormatException, IllegalArgumentException{
 		
 		if(minLength > maxLength){
 			throw new IllegalArgumentException(
