@@ -175,7 +175,7 @@ public interface EnumSanitizer {
 		// ~ Resetting stringValue here was not necessary, but this will make it future-proof ~
 		stringValue = EnumSanitizer.verifyStringFormat(stringValue, separator);
 		
-		String pSep = Utils.protectSeparator(separator);
+		String pSep = Utils.protectRegexChar(separator);
 		
 		if(stringValue.matches("^\\s*(\\\\*" + pSep + ")+\\s*$")){
 			
@@ -260,7 +260,7 @@ public interface EnumSanitizer {
 		// Please see https://regex101.com/r/FrVwfk for an interactive testing session for this regex.
 		// Make sure to use the latest version on this website (click the v1 button to check).
 		
-		String pSep = Utils.protectSeparator(separator);
+		String pSep = Utils.protectRegexChar(separator);
 		
 		String expAnyNonBreakOrSep = "[^\\n" + pSep + "]*";
 		String expAnyNonSpaceOrSep = "([^\\r\\n\\t\\f\\v "
