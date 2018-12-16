@@ -5,6 +5,10 @@ jdk:
   
 sudo: false
 
+stages:
+  - name: after_sucess
+    if: branch = master
+
 env:
   global:
     - export MAVEN_OPTS=-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
