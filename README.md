@@ -6,6 +6,11 @@
 
 Plugin that provides sanitizers for Java primitive types and few other goodies to help type-check objects in applications.
 
+## Beta
+
+You can test the newest features of this plugin by using the *SNAPSHOT* version : [![version (SNAPSHOT)](https://img.shields.io/nexus/s/https/oss.sonatype.org/io.github.v-ed/jsanitizers.svg?label=beta&colorB=e60000)](https://oss.sonatype.org/#nexus-search;quick~jsanitizers).
+The latests commits can be found [here](https://github.com/V-ed/jsanitizers/tree/dev).
+
 ## Author
 
 - Guillaume Marcoux ([V-ed](https://github.com/V-ed)) - Owner
