@@ -17,11 +17,11 @@ public interface Utils {
 	 */
 	static String protectRegexChar(char character){
 		
-		if("<([{\\^-=$!|]})?*+.>".indexOf(character) != -1){
-			return String.format("\\%s", character);
+		if(Character.isLetter(character)){
+			return String.valueOf(character);
 		}
 		else{
-			return String.valueOf(character);
+			return String.format("\\%s", character);
 		}
 		
 	}
