@@ -47,7 +47,7 @@ public class IntegerSanitizer extends Sanitizer<Integer> {
 	 *             a number.</li>
 	 *             </ul>
 	 */
-	static int sanitizeValue(Object value) throws BadFormatException{
+	public static int sanitizeValue(Object value) throws BadFormatException{
 		return IntegerSanitizer.sanitizeValue(value, Integer.MIN_VALUE,
 				Integer.MAX_VALUE);
 	}
@@ -76,7 +76,7 @@ public class IntegerSanitizer extends Sanitizer<Integer> {
 	 *             number lower than the given {@code minValue} parameter.</li>
 	 *             </ul>
 	 */
-	static int sanitizeValueMin(Object value, int minValue)
+	public static int sanitizeValueMin(Object value, int minValue)
 			throws BadFormatException{
 		return IntegerSanitizer.sanitizeValue(value, minValue,
 				Integer.MAX_VALUE);
@@ -106,7 +106,7 @@ public class IntegerSanitizer extends Sanitizer<Integer> {
 	 *             number higher than the given {@code maxValue} parameter.</li>
 	 *             </ul>
 	 */
-	static int sanitizeValueMax(Object value, int maxValue)
+	public static int sanitizeValueMax(Object value, int maxValue)
 			throws BadFormatException{
 		return IntegerSanitizer.sanitizeValue(value, Integer.MIN_VALUE,
 				maxValue);
@@ -141,7 +141,7 @@ public class IntegerSanitizer extends Sanitizer<Integer> {
 	 *             number higher than the given {@code maxValue} parameter.</li>
 	 *             </ul>
 	 */
-	static int sanitizeValue(Object value, int minValue, int maxValue)
+	public static int sanitizeValue(Object value, int minValue, int maxValue)
 			throws BadFormatException{
 		
 		int castedValue;
